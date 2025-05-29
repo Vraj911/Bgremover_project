@@ -1,0 +1,92 @@
+/* Wrapper for the entire header */
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1400px;  /* increased max width */
+  margin: auto;
+  padding: 60px 40px; /* more padding */
+}
+
+/* Left side (text + button) */
+.left-content {
+  flex: 2;           /* expanded to take twice the space */
+  min-width: 400px;  /* slightly bigger minimum */
+  padding-right: 40px; /* more right padding */
+}
+
+.left-content h1 {
+  font-size: 48px;    /* bigger font size */
+  font-weight: 700;
+  color: #2d3748;
+  line-height: 1.2;   /* tighter line height */
+}
+
+.left-content h1 span {
+  color: #2563eb; /* Blue-600 */
+}
+
+/* Upload Button Container */
+.left-content label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #2563eb;
+  color: white;
+  padding: 16px 32px; /* bigger padding */
+  border-radius: 16px; /* more rounded */
+  margin-top: 32px;
+  font-weight: 600;
+  font-size: 18px;     /* bigger text */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.left-content label:hover {
+  background-color: #1e40af; /* Darker blue on hover */
+}
+
+.left-content label img {
+  width: 28px;  /* larger icon */
+  height: 28px;
+}
+
+/* Right side image */
+.right-image {
+  flex: 1.5;          /* increased space relative to before */
+  min-width: 400px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.right-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 450px; /* limit max height for balance */
+  border-radius: 12px; /* optional: rounded corners for style */
+  transform: scale(1.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .header-wrapper {
+    padding: 40px 20px;
+  }
+  .left-content h1 {
+    font-size: 36px;
+  }
+  .left-content label {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+  .right-image {
+    justify-content: center;
+    min-width: 100%;
+    margin-top: 30px;
+  }
+  .right-image img {
+    max-height: 300px;
+  }
+}

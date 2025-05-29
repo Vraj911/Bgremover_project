@@ -1,0 +1,23 @@
+# Global dependencies and environment files
+node_modules/
+.env
+.env.*.local
+*.log
+
+# Frontend build output
+client/build/
+client/dist/
+
+# Backend build output (if any transpilation)
+server/dist/
+
+# IDE & system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# OS-specific junk
+*.swp
+*.swo
