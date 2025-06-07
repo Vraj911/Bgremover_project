@@ -3,8 +3,8 @@ const userSchema=new mongoose.Schema({
     clerkId:{type:String, required:true, unique:true},
     email:{type:String, required:true, unique:true},
     photo:{type:String, required:true,},
-    firstname:{type:String},
-    lastname:{type:String}
+    firstName:{type:String},
+    lastName:{type:String}
 })
-const user=mongoose.models.usre || mongoose.model("user",userSchema);
-export default user
+const User = mongoose.models.User || mongoose.model("User", userSchema);
+export default User;
