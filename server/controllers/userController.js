@@ -1,9 +1,10 @@
 import { Webhook } from 'svix';
 import userModel from '../models/userModel.js';
+
 const clerkWebHooks = async (req, res) => {
   try {
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
-    await whook.verify(JSON.stringify(req.body), {
+    whook.verify(JSON.stringify(req.body), {
       "svix-id": req.headers['svix-id'],
       "svix-timestamp": req.headers['svix-timestamp'],
       "svix-signature": req.headers['svix-signature']
@@ -20,9 +21,8 @@ const clerkWebHooks = async (req, res) => {
           lastName: data.last_name || '',
           photo: data.image_url || ''
         };
-        await User.create(userData);
-        res.json({});
-        break;
+        await userModel.create(userData);
+        return res.status(200).json({ success: true });
       }
 
       case 'user.updated': {
@@ -32,27 +32,25 @@ const clerkWebHooks = async (req, res) => {
           lastName: data.last_name || '',
           photo: data.image_url || ''
         };
-        await User.findOneAndUpdate(
+        await userModel.findOneAndUpdate(
           { clerkId: data.id },
           userData,
           { new: true, upsert: true }
         );
-        res.json({});
-        break;
+        return res.status(200).json({ success: true });
       }
 
       case 'user.deleted': {
-        await User.findOneAndDelete({ clerkId: data.id });
-        res.json({});
-        break;
+        await userModel.findOneAndDelete({ clerkId: data.id });
+        return res.status(200).json({ success: true });
       }
 
       default:
-        res.json({}); // handles unrecognized events gracefully
+        return res.status(200).json({ success: true }); // For unhandled events
     }
   } catch (error) {
     console.error("Webhook verification failed:", error);
-    res.json({ success: false, message: "Webhook verification failed" });
+    return res.status(400).json({ success: false, message: "Webhook verification failed" });
   }
 };
 
