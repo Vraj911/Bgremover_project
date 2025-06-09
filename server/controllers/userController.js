@@ -1,5 +1,5 @@
 import { Webhook } from 'svix';
-import User from '/var/task/server/models/User.js';
+import User from '/server/models/User.js';
 const clerkWebHooks = async (req, res) => {
   try {
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
