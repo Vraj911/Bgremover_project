@@ -19,7 +19,8 @@ const clerkWebHooks = async (req, res) => {
           email: data.email_addresses[0]?.email_address || '',
           firstName: data.first_name || '',
           lastName: data.last_name || '',
-          photo: data.image_url || ''
+          photo: data.image_url || '',
+            creditsBalance: 0
         };
         await userModel.create(userData);
         return res.status(200).json({ success: true });
@@ -30,7 +31,9 @@ const clerkWebHooks = async (req, res) => {
           email: data.email_addresses[0]?.email_address || '',
           firstName: data.first_name || '',
           lastName: data.last_name || '',
-          photo: data.image_url || ''
+          photo: data.image_url || '',
+              creditsBalance: existingUser?.creditsBalance || 0
+
         };
         await userModel.findOneAndUpdate(
           { clerkId: data.id },
@@ -46,12 +49,20 @@ const clerkWebHooks = async (req, res) => {
       }
 
       default:
-        return res.status(200).json({ success: true }); // For unhandled events
+        return res.status(200).json({ success: true }); 
     }
   } catch (error) {
     console.error("Webhook verification failed:", error);
     return res.status(400).json({ success: false, message: "Webhook verification failed" });
   }
 };
-
-export { clerkWebHooks };
+const userCredits = async (req, res) => {
+  try {
+    const { clerkId } = req.user; 
+    const userData = await userModel.findOne({ clerkId });
+    res.json({success: true, credits: userData.creditsBalance});
+  } catch (error) {
+    console.error("Error in userCredits:", error); 
+  }
+}
+export { clerkWebHooks,userCredits };

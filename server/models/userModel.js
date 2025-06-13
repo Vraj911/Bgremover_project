@@ -4,7 +4,8 @@ const userSchema=new mongoose.Schema({
     email:{type:String, required:true, unique:true},
     photo:{type:String, required:true,},
     firstName:{type:String},
-    lastName:{type:String}
+    lastName:{type:String},
+    creditsBalance: { type: Number, default: 0 } 
 })
 const userModel = mongoose.models.user || mongoose.model("user", userSchema);
 export default userModel;
