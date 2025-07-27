@@ -1,8 +1,9 @@
 import React from "react";
 import { assets } from "../assets/assets";
 import './css/Header.css'; 
-
+import { AppContext } from "../context/AppContext";
 const Header = () => {
+  const {removeBg} = React.useContext(AppContext);
   return (
     <div>
       <div className="header-wrapper">
@@ -12,7 +13,7 @@ const Header = () => {
             <span>background</span> from <br />
             images for free.
           </h1>
-          <input
+          <input  onChange={e=>removeBg(e.target.files[0])} 
             type="file"
             id="upload1"
             className="hidden"

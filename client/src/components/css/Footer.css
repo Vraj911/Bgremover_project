@@ -1,23 +1,20 @@
 .footer {
-  background-color: #884e84; /* Dark slate blue/gray */
+  background-color: #884e84; 
   padding: 40px 24px;
   text-align: center;
-  color: #cbd5e1; /* Light gray text */
+  color: #cbd5e1; 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 .footer p {
   font-size: 0.875rem;
   margin-bottom: 24px;
   letter-spacing: 0.03em;
 }
-
 .footer-icons {
   display: flex;
   justify-content: center;
   gap: 30px;
 }
-
 .footer-icons img {
   width: 40px;
   height: 40px;
@@ -25,7 +22,6 @@
   transition: transform 0.3s ease, filter 0.3s ease;
   filter: grayscale(40%);
 }
-
 .footer-icons img:hover {
   transform: scale(1.15);
   filter: grayscale(0%);

@@ -5,23 +5,20 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
 }
-
 .steps-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #4f46e5; /* Indigo-600 */
+  color: #4f46e5; 
   margin-bottom: 3rem;
   line-height: 1.2;
   text-shadow: 0 1px 3px rgba(79, 70, 229, 0.3);
 }
-
 .steps-box {
   display: flex;
   justify-content: center;
   gap: 4rem;
   flex-wrap: wrap;
 }
-
 .step-item {
   background: #f9f9ff;
   padding: 2rem 1.5rem;
@@ -31,31 +28,26 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .step-item:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 25px rgba(79, 70, 229, 0.25);
   background: #eef2ff;
 }
-
 .step-icon {
   width: 64px;
   height: 64px;
   margin-bottom: 1rem;
   transition: filter 0.3s ease;
 }
-
 .step-item:hover .step-icon {
   filter: drop-shadow(0 0 6px #6366f1);
 }
-
 .step-label {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #4b5563; /* Gray-700 */
+  color: #4b5563; 
   transition: color 0.3s ease;
 }
-
 .step-item:hover .step-label {
-  color: #4f46e5; /* Indigo-600 */
+  color: #4f46e5; 
 }

@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { assets } from "../assets/assets";
 import "./Result.css";
-
+import { AppContext } from "../context/AppContext";
 const Result = () => {
+  const {resultImage, image}=useContext(AppContext);
   return (
     <div className="result-container">
       <div className="result-grid">
         <div className="result-item">
           <p className="result-title">Original</p>
           <img
-            src={assets.image_w_bg}
+            src={image? URL.createObjectURL(image) : ""}
             alt="Original with background"
             className="result-image"
           />
@@ -17,16 +18,16 @@ const Result = () => {
         <div className="result-item">
           <p className="result-title green">Background Removed</p>
           <img
-            src={assets.image_wo_bg}
+            src={resultImage ? resultImage : ""}
             alt="Background removed"
             className="result-image"
           />
         </div>
       </div>
-      <div className="result-actions">
+      {resultImage && <div className="result-actions">
         <button>Try other image</button>
-        <a href="#" download>Download image</a>
-      </div>
+        <a href={resultImage} download>Download image</a>
+      </div> }
     </div>
   );
 };
